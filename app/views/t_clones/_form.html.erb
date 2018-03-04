@@ -1,0 +1,14 @@
+<% if @content.errors.any? %>
+<% @content.errors.full_messages.each do |msg| %>
+        <p><%= msg %></p>
+      <% end %>
+<% end %>
+
+<div>
+<%= form_with(model: @content, local: true, url: choose_new_or_edit) do |form| %>
+<%= form.label :投稿内容 %>
+<%= form.text_field :content %>
+<%= form.submit %>
+<% end %>
+</div>
+<%= link_to '一覧に戻る', t_clones_path %>

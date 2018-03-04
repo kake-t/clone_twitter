@@ -1,0 +1,11 @@
+<h1>投稿確認画面</h1>
+<%= form_with(model: @content, local: true) do |form| %>
+<%= form.hidden_field :content %>
+<%= @content.content %>
+<%= form.submit 'はい'%>
+<% end %>
+
+<%= form_with(model: @content, url: new_t_clone_path, local: true, method: 'get') do |form| %>
+<%= form.hidden_field :content %>
+<%= form.submit 'いいえ', name: 'back'%>
+<% end %>
