@@ -4,5 +4,5 @@
 <% @contents.each do |tweet| %>
 <%= tweet.content %>
 <%= link_to '編集', edit_t_clone_path(tweet.id) %>
-<%= link_to '削除', t_clone_path(tweet.id), method: :delete %>
+<%= link_to '削除', t_clone_path(tweet.id), method: :delete %> <!--confirmを実装する-->
 <% end %>
