@@ -1,14 +1,21 @@
-<% if @content.errors.any? %>
-<% @content.errors.full_messages.each do |msg| %>
-        <p><%= msg %></p>
-      <% end %>
-<% end %>
-
-<div>
-<%= form_with(model: @content, local: true, url: choose_new_or_edit) do |form| %>
-<%= form.label :投稿内容 %>
-<%= form.text_field :content %>
-<%= form.submit %>
-<% end %>
+<div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 </div>
-<%= link_to '一覧に戻る', t_clones_path %>
+
+<div class="modal-dialog">
+  <% if @content.errors.any? %>
+    <% @content.errors.full_messages.each do |msg| %>
+      <p class="alert alert-danger"><%= msg %></p>
+    <% end %>
+  <% end %>
+
+  <div class="modal-content">
+    <%= form_with(model: @content, local: true, url: choose_new_or_edit, remote: true) do |form| %>
+      <p><%= form.label :１４０字以内でつぶやこう！ %></p>
+      <p><%= form.text_area :content ,class:"form_size" %></p>
+      <p><%= form.submit 'ツイートする'%></p>
+    <% end %>
+  </div>
+  <div class="modal-content">
+    <%= link_to '一覧に戻る', t_clones_path %>
+  </div>
+</div>

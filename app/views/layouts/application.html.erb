@@ -6,9 +6,29 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width">
   </head>
 
   <body>
+    <header>
+      <nav id="top_menu_bar" class="navbar navbar-default">
+        <div class="navbar-header">
+          <span class="navbar-brand"><%= link_to image_tag('bs_logo.png', :border => '0', :size => '60x60'), t_clones_path%></span>
+        </div>
+          <ul class="nav navbar-nav">
+            <li><%= link_to 'ホーム', t_clones_path %></li>
+            <li><%= link_to 'ツイート', new_t_clone_path, remote: true %></li>
+          </ul>
+
+      </nav>
+    </header>
+
     <%= yield %>
+
+    <footer>
+      <div class="container">
+        <p>2018年 3月 phace2大課題</p>
+      </div>
+    </footer>
   </body>
 </html>

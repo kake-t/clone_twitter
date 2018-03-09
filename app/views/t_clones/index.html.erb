@@ -1,8 +1,24 @@
-<h1>一覧画面</h1>
-<%= link_to '新規投稿', new_t_clone_path %>
+<div id="tweet_container" class="container">
+  <div class="row">
 
-<% @contents.each do |tweet| %>
-<%= tweet.content %>
-<%= link_to '編集', edit_t_clone_path(tweet.id) %>
-<%= link_to '削除', t_clone_path(tweet.id), method: :delete %> <!--confirmを実装する-->
-<% end %>
+    <h1 id="app_title">BS_twitter</h1>
+    <div id="app_title_comment">ブラックサンダーを買ったらつぶやこう！</div>
+
+    <div id="new_button">
+      <%= link_to 'クリックしてツイートしよう！', new_t_clone_path, remote: true, class: "btn btn-lg btn-primary" %>
+    </div>
+    <div id="form-modal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true"></div>
+
+    <table class="container">
+      <% @contents.each do |tweet| %>
+        <tr>
+          <td class="tweet_content row">
+            <span class="col-md-10"><%= simple_format(tweet.content) %></span>
+            <%= link_to '編集', edit_t_clone_path(tweet.id), class: "col-md-1 btn btn-info btn-sm" %>
+            <%= link_to '削除', t_clone_path(tweet.id), class:"col-md-1 btn btn-danger btn-sm", method: :delete, data: {confirm: "本当に削除してもいいですか？"} %>
+          </td>
+        </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
